@@ -7,11 +7,12 @@ import Dashboard from './components/Dashboard';
 function App() {
   const [showDashboard, setShowDashboard] = useState(false);
   const [username, setUsername] = useState("");
-
+  const [logoutMessage, setLogoutMessage] = useState("");
+  
   return (
-    <LogInContext.Provider value={{ username, setUsername, setShowDashboard }}>
+    <LogInContext.Provider value={{ username, setUsername, setShowDashboard, logoutMessage, setLogoutMessage }}>
       {showDashboard ?
-        <Dashboard/> :
+        <Dashboard /> :
         <LogInComponent />
       }
     </LogInContext.Provider>
