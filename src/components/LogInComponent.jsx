@@ -1,20 +1,22 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import LogInBg from '../assets/bg.svg'
 import { LogInContext } from '../contexts/LogInContext'
 
 const LogInComponent = () => {
-    const { username, setUsername, setShowDashboard, logoutMessage } = useContext(LogInContext);
+    const { username, setUsername, setShowDashboard, logoutMessage, visible } = useContext(LogInContext);
+
+
 
     return (
         <div className='min-h-screen grid grid-cols-1 lg:grid-cols-2 place-items-center '>
             <div className='hidden lg:block'>
                 <img src={LogInBg} alt="Log In" className='h-96 object-cover w-full' />
             </div>
-           
+
             <div className='h-full min-w-full flex justify-center items-center '>
                 <div className='w-full mx-10 lg:mx-24'>
                     {logoutMessage &&
-                        <div className='py-4 text-center mb-5 rounded-lg border bg-green-500 text-white font-medium'>
+                        <div className={`py-4 text-center mb-5 rounded-lg border bg-green-500 text-white font-medium transition-opacity duration-1000 ${visible ? 'opacity-100' : 'opacity-0'}`}>
                             <p>{logoutMessage}</p>
                         </div>}
                     <div>

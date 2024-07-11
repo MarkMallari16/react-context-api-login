@@ -15,7 +15,7 @@ const Dashboard = () => {
       <div className='border shadow-sm py-8 px-10 rounded-lg'>
         <h3 className='text-xl'>Welcome back! <span className='font-bold'>{username}</span></h3>
       </div>
-      <button className='bg-red-500 text-white px-4 py-2 mt-5 rounded-md' onClick={handleLogout}>Log out</button>
+      <button className='bg-red-500 hover:bg-red-600 transition-all ease-in-out text-white px-4 py-2 mt-5 rounded-md' onClick={handleLogout}>Log out</button>
     </div>
   )
 }
