@@ -33,7 +33,7 @@ const Sidebar = () => {
                     <div className={`bg-blue-500 text-xl text-center rounded-lg p-3 ${isSideBarExpand ? 'px-4 w-auto' : 'w-full'}`}>
                         <p className='font-bold text-slate-50'>{shortName}</p>
                     </div>
-                    <div className={`${isSideBarExpand ? 'block' : 'hidden'}`}>
+                    <div className={` transition-opacity ease-in-out duration-200 ${isSideBarExpand ? 'block opacity-100' : 'opacity-0 hidden'}`}>
                         <div className='font-medium text-lg'>{username}</div>
                         <div className='text-slate-500 text-sm'>User</div>
                     </div>
