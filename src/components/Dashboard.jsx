@@ -1,21 +1,15 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { LogInContext } from '../contexts/LogInContext'
 import Sidebar from './Sidebar';
 
 const Dashboard = () => {
-  const { username, setShowDashboard, setLogoutMessage } = useContext(LogInContext);
-
-  
+  const { username } = useContext(LogInContext);
 
   return (
-    <div className='min-h-screen  flex gap-10'>
-      <Sidebar />
-      <div className='p-5 w-full'>
-        <h1 className='text-2xl mb-4 font-bold'>Dashboard</h1>
-        <div className='border shadow-sm py-8 px-10 rounded-lg'>
-          <h3 className='text-xl'>Welcome back! <span className='font-bold'>{username}</span></h3>
-        </div>
-       
+    <div className='p-5 w-full'>
+      <h1 className='text-2xl mb-4 font-bold'>Dashboard</h1>
+      <div className='border shadow-sm py-8 px-10 rounded-lg'>
+        <h3 className='text-xl'>Welcome back! <span className='font-bold'>{username}</span></h3>
       </div>
     </div>
   )
