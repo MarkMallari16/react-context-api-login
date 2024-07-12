@@ -4,9 +4,6 @@ import { LogInContext } from '../contexts/LogInContext'
 
 const LogInComponent = () => {
     const { username, setUsername, showDashboard, setShowDashboard, logoutMessage, visible } = useContext(LogInContext);
-
-
-    console.log("Value: ", showDashboard)
     return (
         <div className='min-h-screen grid grid-cols-1 lg:grid-cols-2 place-items-center '>
             <div className='hidden lg:block'>

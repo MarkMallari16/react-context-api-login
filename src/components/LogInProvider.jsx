@@ -13,7 +13,7 @@ const LogInProvider = ({ children }) => {
             }, 1000);
             return () => clearTimeout(timer);
         }
-    }, [visible, logoutMessage]);
+    }, [logoutMessage]);
 
     return (
         <LogInContext.Provider
