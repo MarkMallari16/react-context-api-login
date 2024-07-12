@@ -1,32 +1,21 @@
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
 
 import './App.css'
 import { LogInContext } from './contexts/LogInContext';
 import LogInComponent from './components/LogInComponent';
 import Dashboard from './components/Dashboard';
+import LogInProvider from './components/LogInProvider';
 function App() {
-  const [showDashboard, setShowDashboard] = useState(false);
-  const [username, setUsername] = useState("");
-  const [logoutMessage, setLogoutMessage] = useState("");
-  const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    if (logoutMessage) {
-      const timer = setTimeout(() => {
-        setVisible(false)
-      }, 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [logoutMessage]);
-
   return (
-    <LogInContext.Provider value={{ username, setUsername, setShowDashboard, logoutMessage, setLogoutMessage, visible }}>
-      {showDashboard ?
-        <Dashboard /> :
-        <LogInComponent />
-      }
-    </LogInContext.Provider>
+    <LogInProvider>
+      <Content/>
+    </LogInProvider>
   )
+}
+function Content() {
+  const { showDashboard } = useContext(LogInContext);
+
+  return showDashboard ? <Dashboard /> : <LogInComponent />
 }
 
 export default App
