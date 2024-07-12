@@ -5,20 +5,17 @@ import Sidebar from './Sidebar';
 const Dashboard = () => {
   const { username, setShowDashboard, setLogoutMessage } = useContext(LogInContext);
 
-  const handleLogout = () => {
-    setShowDashboard(false);
-    setLogoutMessage('You have successfully logged out.');
-  };
+  
 
   return (
     <div className='min-h-screen  flex gap-10'>
       <Sidebar />
       <div className='p-5 w-full'>
-        <h1 className='text-2xl mb-4'>Dashboard</h1>
+        <h1 className='text-2xl mb-4 font-bold'>Dashboard</h1>
         <div className='border shadow-sm py-8 px-10 rounded-lg'>
           <h3 className='text-xl'>Welcome back! <span className='font-bold'>{username}</span></h3>
         </div>
-        <button className='bg-red-500 hover:bg-red-600 transition-all ease-in-out text-white px-4 py-2 mt-5 rounded-md' onClick={handleLogout}>Log out</button>
+       
       </div>
     </div>
   )
