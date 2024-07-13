@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { LogInContext } from '../contexts/LogInContext'
 const LogInProvider = ({ children }) => {
-    const [showDashboard, setShowDashboard] = useState(false);
+    const initialShowDashboard = () => {
+        return JSON.parse(localStorage.getItem("showDashboard")) || false;
+    }
+
+    const [showDashboard, setShowDashboard] = useState(initialShowDashboard);
     const [username, setUsername] = useState("");
     const [logoutMessage, setLogoutMessage] = useState("");
     const [visible, setVisible] = useState(true);
+
+    useEffect(() => {
+        localStorage.setItem("showDashboard", JSON.stringify(showDashboard));
+    }, [showDashboard]);
 
     useEffect(() => {
         if (logoutMessage) {

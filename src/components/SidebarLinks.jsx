@@ -46,17 +46,17 @@ const SidebarLinks = ({ isSideBarExpand }) => {
     ]
 
     return (
-        <div className='flex flex-col space-y-4 pt-10'>
+        <div className='flex flex-col space-y-5 pt-10'>
 
             {links.map((link, index) => (
-                <NavLink key={index} to={link.path} className={({ isActive }) => isActive ? 'active px-5 py-3 flex gap-3 w-full bg-blue-100 text-blue-600 font-medium rounded-lg cursor-pointer' : 'px-5 py-3 flex gap-3 w-full  text-black font-medium rounded-lg cursor-pointer hover:bg-slate-200 transition-all  duration-300'}>
+                <NavLink key={index} to={link.path} className={({ isActive }) => isActive ? 'px-5 py-3 flex gap-3 w-full bg-blue-100 text-blue-600 font-medium rounded-lg cursor-pointer' : 'px-5 py-3 flex gap-3 w-full  text-black font-medium rounded-lg cursor-pointer hover:bg-slate-200 transition-all  duration-300 overflow-hidden'}>
                     <div>{link.icon}</div>
-                    <span className={`${!isSideBarExpand && 'opacity-0'}  origin-left duration-300 font-medium`}>{link.title}</span>
+                    <span className={`${!isSideBarExpand && 'hidden'}  origin-left duration-300 font-medium`}>{link.title}</span>
                 </NavLink>
             ))}
 
-            <div className='pt-10'>
-                <div className='px-5 py-3 flex items-center gap-3 cursor-pointer hover:bg-slate-200 rounded-lg transition-all w-full' onClick={handleLogout}>
+            <div className='pt-10 '>
+                <div className='px-5 py-3 flex   gap-3 cursor-pointer hover:bg-slate-200 rounded-lg transition-all  overflow-hidden' onClick={handleLogout}>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
@@ -64,7 +64,7 @@ const SidebarLinks = ({ isSideBarExpand }) => {
                     </div>
 
 
-                    <span className={`${!isSideBarExpand && 'opacity-0'} duration-500 font-medium overflow-hidden`}>Log Out</span>
+                    <p className={`${!isSideBarExpand && 'hidden'} duration-500 font-medium`}>LogOut</p>
                 </div>
             </div>
         </div>
