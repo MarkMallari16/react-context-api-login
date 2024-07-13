@@ -3,7 +3,7 @@ import LogInBg from '../assets/bg.svg'
 import { LogInContext } from '../contexts/LogInContext'
 
 const LogInComponent = () => {
-    const { username, setUsername, showDashboard, setShowDashboard, logoutMessage, visible } = useContext(LogInContext);
+    const { username, setUsername, setShowDashboard, logoutMessage, visible } = useContext(LogInContext);
     return (
         <div className='min-h-screen grid grid-cols-1 lg:grid-cols-2 place-items-center '>
             <div className='hidden lg:block'>
