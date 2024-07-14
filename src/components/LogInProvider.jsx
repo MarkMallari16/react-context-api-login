@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { LogInContext } from '../contexts/LogInContext'
 const LogInProvider = ({ children }) => {
+    const initialUsername = () => {
+        return JSON.parse(localStorage.getItem("username")) || "";
+    }
     const initialShowDashboard = () => {
         return JSON.parse(localStorage.getItem("showDashboard")) || false;
     }
 
     const [showDashboard, setShowDashboard] = useState(initialShowDashboard);
-    const [username, setUsername] = useState("");
+    const [username, setUsername] = useState(initialUsername);
     const [logoutMessage, setLogoutMessage] = useState("");
     const [visible, setVisible] = useState(true);
 
     useEffect(() => {
         localStorage.setItem("showDashboard", JSON.stringify(showDashboard));
-    }, [showDashboard]);
+        localStorage.setItem("username", JSON.stringify(username));
+    }, [showDashboard, username]);
 
     useEffect(() => {
         if (logoutMessage) {
@@ -23,6 +27,14 @@ const LogInProvider = ({ children }) => {
         }
     }, [logoutMessage]);
 
+    const logout = () => {
+        localStorage.removeItem("showDashboard");
+        localStorage.removeItem("username");
+        setUsername("");
+        setLogoutMessage("You have successfully logged out.");
+        setVisible(true);
+        setShowDashboard(false)
+    }
     return (
         <LogInContext.Provider
             value={{
@@ -33,6 +45,7 @@ const LogInProvider = ({ children }) => {
                 logoutMessage,
                 setLogoutMessage,
                 visible,
+                logout
             }}
         >
             {children}
