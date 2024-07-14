@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import LogInBg from '../assets/bg.svg'
 import { LogInContext } from '../contexts/LogInContext'
-import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
+import { FcGoogle } from 'react-icons/fc';
+import { FaGithub } from 'react-icons/fa';
+
 
 const LogInComponent = () => {
     const { username, setUsername, setShowDashboard, logoutMessage, visible } = useContext(LogInContext);
