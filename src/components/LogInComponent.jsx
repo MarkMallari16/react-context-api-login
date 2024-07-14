@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import LogInBg from '../assets/bg.svg'
 import { LogInContext } from '../contexts/LogInContext'
-import { FcGoogle } from 'react-icons/fc';
-import { FaGithub } from 'react-icons/fa';
 
 
 const LogInComponent = () => {
@@ -35,16 +33,6 @@ const LogInComponent = () => {
                         <button className='text-white bg-blue-500 hover:bg-blue-600 w-full mt-6 transition-all ease-in-out p-3 rounded-lg' onClick={() => setShowDashboard(true)}>
                             Log in
                         </button>
-                        <button className='flex items-center justify-center gap-2 border border-slate-300 w-full mt-4  p-3 rounded-lg text-black' onClick={() => setShowDashboard(true)}>
-                            <FcGoogle className='text-2xl' />
-                            <p>Log in with Google</p>
-
-                        </button>
-                        <button className='flex items-center justify-center gap-2 border border-slate-300 w-full mt-4  p-3 rounded-lg text-black' onClick={() => setShowDashboard(true)}>
-                            <FaGithub className='text-2xl' />
-                            <p>Log in with Github</p>
-                        </button>
-
                     </div>
                 </div>
             </div>

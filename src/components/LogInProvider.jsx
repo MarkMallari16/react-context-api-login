@@ -25,7 +25,7 @@ const LogInProvider = ({ children }) => {
             }, 1000);
             return () => clearTimeout(timer);
         }
-    }, [logoutMessage]);
+    }, [logoutMessage,showDashboard]);
 
     const logout = () => {
         localStorage.removeItem("showDashboard");
