@@ -6,6 +6,11 @@ import { LogInContext } from '../contexts/LogInContext'
 const LogInComponent = () => {
     const { username, setUsername, password, setPassword, error, login, logoutMessage, visible } = useContext(LogInContext);
 
+    const handleEnter = (e) => {
+        if (e.key === 'Enter') {
+            login(username, password);
+        }
+    };
     return (
         <div className='min-h-screen grid grid-cols-1 lg:grid-cols-2 place-items-center '>
             <div className='hidden  bg-blue-500 h-full w-full lg:flex justify-center items-center'>
@@ -23,13 +28,13 @@ const LogInComponent = () => {
                     </div>
                     <div className='mt-8'>
                         <label htmlFor="username" className='text-lg text-slate-800'>Enter Username: </label>
-                        <input type="text" id="username" placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} className='mt-1 p-4 w-full border rounded-lg border-slate-300 focus:outline-blue-500' />
+                        <input type="text" id="username" placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} onKeyDown={handleEnter} className='mt-1 p-4 w-full border rounded-lg border-slate-300 focus:outline-blue-500' />
                     </div>
                     <div className='mt-4'>
                         <label htmlFor="username" className='text-lg text-slate-800'>Enter Password: </label>
-                        <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} className='mt-1 p-4 w-full border rounded-lg border-slate-300 focus:outline-blue-500' />
+                        <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} onKeyDown={handleEnter} className='mt-1 p-4 w-full border rounded-lg border-slate-300 focus:outline-blue-500' />
                     </div>
-                    {error && <p className='mt-2 text-red-500'>{error}</p>}
+                    {error && <p className='mt-1 text-red-500'>{error}</p>}
                     <div>
                         <button className='text-white bg-blue-500 hover:bg-blue-600 w-full mt-6 transition-all ease-in-out p-3 rounded-lg' onClick={() => login(username, password)}>
                             Log in

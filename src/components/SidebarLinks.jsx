@@ -4,7 +4,7 @@ import { LogInContext } from '../contexts/LogInContext';
 
 const SidebarLinks = ({ isSideBarExpand }) => {
 
-    const { setShowDashboard, setLogoutMessage, logout } = useContext(LogInContext);
+    const { logout } = useContext(LogInContext);
 
     const links = [
         {
@@ -46,7 +46,7 @@ const SidebarLinks = ({ isSideBarExpand }) => {
             {links.map((link, index) => (
                 <NavLink key={index} to={link.path} className={({ isActive }) => isActive ? 'px-5 py-3 flex gap-3 w-full bg-blue-100 text-blue-600 font-medium rounded-lg cursor-pointer' : 'px-5 py-3 flex gap-3 w-full  text-black font-medium rounded-lg cursor-pointer hover:bg-slate-200 transition-all  duration-300 overflow-hidden'}>
                     <div>{link.icon}</div>
-                    <span className={`${!isSideBarExpand && 'hidden'}  origin-left duration-300 font-medium`}>{link.title}</span>
+                    <span className={`${!isSideBarExpand && 'hidden'}  origin-left duration-500 font-medium`}>{link.title}</span>
                 </NavLink>
             ))}
 

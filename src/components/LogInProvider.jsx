@@ -19,7 +19,7 @@ const LogInProvider = ({ children }) => {
 
     useEffect(() => {
         localStorage.setItem("showDashboard", JSON.stringify(showDashboard));
-      
+
     }, [showDashboard, username]);
 
     useEffect(() => {
@@ -32,7 +32,8 @@ const LogInProvider = ({ children }) => {
     }, [logoutMessage, showDashboard]);
     const login = (inputUsername, inputPassword) => {
         if (inputUsername === defaultUsername && inputPassword === defaultPassword) {
-            setUsername
+            setUsername(inputUsername);
+            setPassword(inputPassword);
             setShowDashboard(true);
             setError("");
         } else {
@@ -62,6 +63,7 @@ const LogInProvider = ({ children }) => {
                 visible,
                 login,
                 logout,
+               
             }}
         >
             {children}
