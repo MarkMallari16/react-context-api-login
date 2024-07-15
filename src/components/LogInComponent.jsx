@@ -9,6 +9,7 @@ const LogInComponent = () => {
     const handleEnter = (e) => {
         if (e.key === 'Enter') {
             login(username, password);
+         
         }
     };
     return (

@@ -11,7 +11,7 @@ const Sidebar = () => {
 
 
     return (
-        <div className={`ring-1 ring-slate-300 p-4 lg:px-4 lg:py-5 relative  ${isSideBarExpand ? 'w-96' : 'w-24 '} duration-500 ease-in-out rounded-r-xl`} >
+        <div className={`ring-1 bg-white ring-slate-300 p-4 lg:px-4 lg:py-5 relative  ${isSideBarExpand ? 'w-96' : 'w-24 '} duration-500 ease-in-out rounded-r-xl`} >
             <div className={`hidden lg:block absolute top-64 ${isSideBarExpand ? '-right-4' : '-right-4 rotate-180'} bg-blue-500 rounded-full cursor-pointer p-1 text-white transition-all  duration-500 ease-in-out`} onClick={handleSideBarExpand}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />

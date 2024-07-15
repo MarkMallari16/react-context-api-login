@@ -28,18 +28,20 @@ const BarChart = () => {
                 beginAtZero: true,
             },
         },
-        responsive: true,
+
         plugins: {
             legend: {
                 display: false,
             },
+            responsive: true,
         },
     };
 
     return (
-        <div className='w-96'>
-            <Bar data={data} options={options} />
-        </div>
+
+        <Bar data={data} options={options} className='bg-white p-5'/>
+
+
     )
 }
 
