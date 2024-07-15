@@ -46,7 +46,7 @@ const SidebarLinks = ({ isSideBarExpand }) => {
             {links.map((link, index) => (
                 <NavLink key={index} to={link.path} className={({ isActive }) => isActive ? 'px-5 py-3 flex gap-3 w-full bg-blue-100 text-blue-600 font-medium rounded-lg cursor-pointer' : 'px-5 py-3 flex gap-3 w-full  text-black font-medium rounded-lg cursor-pointer hover:bg-slate-200 transition-all  duration-300 overflow-hidden'}>
                     <div>{link.icon}</div>
-                    <span className={`${!isSideBarExpand && 'hidden'}  origin-left duration-500 font-medium`}>{link.title}</span>
+                    <span className={`${!isSideBarExpand && 'opacity-0'}  duration-500 ease-in-out font-medium`}>{link.title}</span>
                 </NavLink>
             ))}
 
@@ -59,7 +59,7 @@ const SidebarLinks = ({ isSideBarExpand }) => {
                     </div>
 
 
-                    <p className={`${!isSideBarExpand && 'hidden'} duration-500 font-medium`}>LogOut</p>
+                    <p className={`${!isSideBarExpand && 'opacity-0'} duration-500 font-medium`}>Logout</p>
                 </div>
             </div>
         </div>

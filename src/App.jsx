@@ -30,7 +30,7 @@ function Content() {
   return (
     <>
 
-      <div className='min-h-screen  flex gap-5 lg:gap-10'>
+      <div className='min-h-screen flex gap-5 lg:gap-10'>
         <Sidebar />
         <Routes>
           <Route path='/' element={<Dashboard />} />
