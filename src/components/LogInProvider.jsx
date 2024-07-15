@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import { LogInContext } from '../contexts/LogInContext'
 const LogInProvider = ({ children }) => {
-    const initialUsername = () => {
-        return JSON.parse(localStorage.getItem("username")) || "";
-    }
+    const defaultUsername = "mark";
+    const defaultPassword = "markpogi123";
+
+
     const initialShowDashboard = () => {
-        return JSON.parse(localStorage.getItem("showDashboard")) || false;
+        const storedShowDashboard = localStorage.getItem("showDashboard");
+        return storedShowDashboard ? JSON.parse(storedShowDashboard) : false
     }
 
     const [showDashboard, setShowDashboard] = useState(initialShowDashboard);
-    const [username, setUsername] = useState(initialUsername);
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     const [logoutMessage, setLogoutMessage] = useState("");
     const [visible, setVisible] = useState(true);
+    const [error, setError] = useState("");
 
     useEffect(() => {
         localStorage.setItem("showDashboard", JSON.stringify(showDashboard));
-        localStorage.setItem("username", JSON.stringify(username));
+      
     }, [showDashboard, username]);
 
     useEffect(() => {
@@ -25,12 +29,20 @@ const LogInProvider = ({ children }) => {
             }, 1000);
             return () => clearTimeout(timer);
         }
-    }, [logoutMessage,showDashboard]);
-
+    }, [logoutMessage, showDashboard]);
+    const login = (inputUsername, inputPassword) => {
+        if (inputUsername === defaultUsername && inputPassword === defaultPassword) {
+            setUsername
+            setShowDashboard(true);
+            setError("");
+        } else {
+            setError("Invalid username or password");
+        }
+    }
     const logout = () => {
         localStorage.removeItem("showDashboard");
-        localStorage.removeItem("username");
         setUsername("");
+        setPassword("");
         setLogoutMessage("You have successfully logged out.");
         setVisible(true);
         setShowDashboard(false)
@@ -39,13 +51,17 @@ const LogInProvider = ({ children }) => {
         <LogInContext.Provider
             value={{
                 username,
+                password,
+                error,
                 setUsername,
+                setPassword,
                 showDashboard,
                 setShowDashboard,
                 logoutMessage,
                 setLogoutMessage,
                 visible,
-                logout
+                login,
+                logout,
             }}
         >
             {children}

@@ -4,7 +4,7 @@ import { LogInContext } from '../contexts/LogInContext'
 
 
 const LogInComponent = () => {
-    const { username, setUsername, setShowDashboard, logoutMessage, visible } = useContext(LogInContext);
+    const { username, setUsername, password, setPassword, error, login, logoutMessage, visible } = useContext(LogInContext);
 
     return (
         <div className='min-h-screen grid grid-cols-1 lg:grid-cols-2 place-items-center '>
@@ -27,10 +27,11 @@ const LogInComponent = () => {
                     </div>
                     <div className='mt-4'>
                         <label htmlFor="username" className='text-lg text-slate-800'>Enter Password: </label>
-                        <input type="password" placeholder='Password' className='mt-1 p-4 w-full border rounded-lg border-slate-300 focus:outline-blue-500' />
+                        <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} className='mt-1 p-4 w-full border rounded-lg border-slate-300 focus:outline-blue-500' />
                     </div>
+                    {error && <p className='mt-2 text-red-500'>{error}</p>}
                     <div>
-                        <button className='text-white bg-blue-500 hover:bg-blue-600 w-full mt-6 transition-all ease-in-out p-3 rounded-lg' onClick={() => setShowDashboard(true)}>
+                        <button className='text-white bg-blue-500 hover:bg-blue-600 w-full mt-6 transition-all ease-in-out p-3 rounded-lg' onClick={() => login(username, password)}>
                             Log in
                         </button>
                     </div>
