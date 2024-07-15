@@ -19,11 +19,11 @@ const Sidebar = () => {
             </div>
             <div >
 
-                <div className='flex w-full items-center space-x-4'>
-                    <div className={`bg-blue-500 text-xl text-center rounded-lg p-3 ${isSideBarExpand ? 'px-4 w-auto' : 'w-full'}`}>
+                <div className='flex w-full  items-center space-x-4'>
+                    <div className={`bg-blue-500 text-xl text-center rounded-lg py-3 px-4  ${isSideBarExpand ? 'w-auto' : 'w-full'}`}>
                         <p className='font-bold text-slate-50'>{shortName}</p>
                     </div>
-                    <div className={` transition-opacity ease-in-out duration-200 ${isSideBarExpand ? 'block' : 'opacity-0 '}`}>
+                    <div className={` transition-opacity ease-in-out duration-200 ${!isSideBarExpand && 'opacity-0 '}`}>
                         <div className='font-medium text-lg'>{username}</div>
                         <div className='text-slate-500 text-sm'>User</div>
                     </div>
