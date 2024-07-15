@@ -39,7 +39,7 @@ const BarChart = () => {
 
     return (
 
-        <Bar data={data} options={options} className='bg-white p-5'/>
+        <Bar data={data} options={options} className='bg-white p-5 rounded-lg  shadow-md'/>
 
 
     )
