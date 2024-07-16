@@ -9,14 +9,14 @@ const Dashboard = () => {
   return (
     <div className='p-5 w-full'>
       <h1 className='text-2xl mb-4 font-bold'>Dashboard</h1>
-      <div className='border shadow-sm py-5 px-10 rounded-lg bg-white'>
-        <h3 className='text-xl'>Welcome back! <span className='font-bold'>{username}</span></h3>
+      <div className='border shadow-sm py-5 px-6 rounded-lg bg-white'>
+        <h3 className='text-xl text-slate-900'>Welcome back! <span className='font-bold'>{username}</span></h3>
       </div>
       <div className='mt-6 grid grid-cols-1 lg:grid-cols-4 gap-4 w-full'>
-        <div className='bg-blue-100 flex justify-between items-center px-5 py-10 rounded-lg shadow-md'>
+        <div className='bg-white flex justify-between items-center px-5 py-10 rounded-lg shadow-md'>
           <div>
-            <h1 className='text-3xl font-bold'>20000</h1>
-            <p>Number of users</p>
+            <h1 className='text-3xl text-slate-900 font-bold'>20000</h1>
+            <p className='text-slate-800'>Number of users</p>
           </div>
           <div>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-10">
@@ -24,10 +24,10 @@ const Dashboard = () => {
             </svg>
           </div>
         </div>
-        <div className='bg-blue-100 flex justify-between items-center px-5 py-10 rounded-lg shadow-md'>
+        <div className='bg-white flex justify-between items-center px-5 py-10 rounded-lg shadow-md'>
           <div>
-            <h1 className='text-3xl font-bold'>20000</h1>
-            <p>Number of users</p>
+            <h1 className='text-3xl text-slate-900 font-bold'>20000</h1>
+            <p className='text-slate-800'>Number of users</p>
           </div>
           <div>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-10">
@@ -35,10 +35,10 @@ const Dashboard = () => {
             </svg>
           </div>
         </div>
-        <div className='bg-blue-100 flex justify-between items-center px-5 py-10 rounded-lg shadow-md'>
+        <div className='bg-white  flex justify-between items-center px-5 py-10 rounded-lg shadow-md'>
           <div>
-            <h1 className='text-3xl font-bold'>20000</h1>
-            <p>Number of users</p>
+            <h1 className='text-3xl text-slate-900 font-bold'>20000</h1>
+            <p className='text-slate-800'>Number of users</p>
           </div>
           <div>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-10">
@@ -46,10 +46,10 @@ const Dashboard = () => {
             </svg>
           </div>
         </div>
-        <div className='bg-blue-100 flex justify-between items-center px-5 py-10 rounded-lg shadow-md'>
+        <div className='bg-white flex justify-between items-center px-5 py-10 rounded-lg shadow-md'>
           <div>
-            <h1 className='text-3xl font-bold'>20000</h1>
-            <p>Number of users</p>
+            <h1 className='text-3xl text-slate-900 font-bold'>20000</h1>
+            <p className='text-slate-800'>Number of users</p>
           </div>
           <div>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-10">
