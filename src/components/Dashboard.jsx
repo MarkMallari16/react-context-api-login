@@ -1,7 +1,5 @@
 import React, { useContext } from 'react'
 import { LogInContext } from '../contexts/LogInContext'
-import Sidebar from './Sidebar';
-import BarChart from './charts/BarChart';
 
 const Dashboard = () => {
   const { username } = useContext(LogInContext);
