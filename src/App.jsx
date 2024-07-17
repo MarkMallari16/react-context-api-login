@@ -7,10 +7,11 @@ import Dashboard from './components/Dashboard';
 import LogInProvider from './components/LogInProvider';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
-import Students from './pages/Students';
+
 import Notifications from './pages/Notifications';
 import Analytics from './pages/Analytics';
 import Settings from './pages/Settings';
+import Orders from './pages/Orders';
 function App() {
   return (
     <LogInProvider>
@@ -34,7 +35,7 @@ function Content() {
         <Sidebar />
         <Routes>
           <Route path='/' element={<Dashboard />} />
-          <Route path='/students' element={<Students />} />
+          <Route path='/orders' element={<Orders />} />
           <Route path='/notifications' element={<Notifications />} />
           <Route path='/analytics' element={<Analytics />} />
           <Route path='/settings' element={<Settings />} />
