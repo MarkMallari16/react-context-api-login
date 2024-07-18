@@ -20,7 +20,7 @@ const Sidebar = () => {
             <div >
 
                 <div className='flex w-full  items-center space-x-4'>
-                    <div className={`bg-blue-500 text-xl text-center rounded-lg py-3 px-4  ${isSideBarExpand ? 'w-auto' : 'w-full'}`}>
+                    <div className={`bg-blue-500 text-xl text-center rounded-lg py-3 px-4 ${isSideBarExpand ? 'w-auto' : 'w-full'}`}>
                         <p className='font-bold text-slate-50'>{shortName}</p>
                     </div>
                     <div className={` transition-opacity ease-in-out duration-200 ${!isSideBarExpand && 'opacity-0 '}`}>
