@@ -4,12 +4,10 @@ const LogInProvider = ({ children }) => {
     const defaultUsername = "mark";
     const defaultPassword = "markpogi123";
 
-
     const initialShowDashboard = () => {
         const storedShowDashboard = localStorage.getItem("showDashboard");
         return storedShowDashboard ? JSON.parse(storedShowDashboard) : false
     }
-
     const [showDashboard, setShowDashboard] = useState(initialShowDashboard);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -63,7 +61,6 @@ const LogInProvider = ({ children }) => {
                 visible,
                 login,
                 logout,
-               
             }}
         >
             {children}

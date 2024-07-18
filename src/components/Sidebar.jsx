@@ -25,7 +25,7 @@ const Sidebar = () => {
                     </div>
                     <div className={` transition-opacity ease-in-out duration-200 ${!isSideBarExpand && 'opacity-0 '}`}>
                         <div className='font-medium text-lg'>{username}</div>
-                        <div className='text-slate-500 text-sm'>User</div>
+                        <div className='text-slate-500 text-sm'>Admin</div>
                     </div>
                 </div>
                 <SidebarLinks isSideBarExpand={isSideBarExpand} />
