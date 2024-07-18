@@ -1,4 +1,5 @@
 import React from 'react'
+import ProductTable from '../components/tables/ProductTable'
 
 const Products = () => {
 
@@ -7,6 +8,9 @@ const Products = () => {
             <h1 className='text-2xl mb-4 font-bold'>Manage Products</h1>
             <div className='bg-white  border shadow-sm py-8 px-10 rounded-lg'>
                 Manage Products
+            </div>
+            <div className='mt-5'>
+                <ProductTable />
             </div>
         </div>
     )
