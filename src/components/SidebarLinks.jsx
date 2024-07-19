@@ -65,7 +65,7 @@ const SidebarLinks = ({ isSideBarExpand }) => {
                     </div>
 
 
-                    <p className={`${!isSideBarExpand && 'opacity-0'} duration-500 font-normal text-slate-800`}>Logout</p>
+                    <p className={`${!isSideBarExpand && 'opacity-0'}  font-normal text-slate-800`}>Logout</p>
                 </div>
             </div>
         </div>
