@@ -1,5 +1,6 @@
 import React from 'react'
 import AddProductModal from '../modal/AddProductModal'
+import { Button } from 'antd'
 
 const ProductTable = () => {
 
@@ -7,7 +8,7 @@ const ProductTable = () => {
 
         <div>
             <div className='flex justify-end mb-4'>
-                <AddProductModal/>
+                <AddProductModal />
             </div>
             <table class="table-fixed bg-white w-full rounded-lg shadow-md">
                 <thead className='border-b border-slate-300'>
@@ -17,6 +18,7 @@ const ProductTable = () => {
                         <th className=' lg:p-3 text-slate-900'>Product Name</th>
                         <th className=' lg:p-3 text-slate-900'>Rating</th>
                         <th className=' lg:p-3 text-slate-900'>Price</th>
+                        <th className=' lg:p-3 text-slate-900'>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,6 +53,12 @@ const ProductTable = () => {
 
                         </td>
                         <td className=' p-5 text-center'>2000</td>
+                        <td>
+                            <span className='flex gap-2 justify-center'>
+                                <Button type='primary' >Edit</Button>
+                                <Button type='primary' danger>Delete</Button>
+                            </span>
+                        </td>
                     </tr>
 
                 </tbody>
