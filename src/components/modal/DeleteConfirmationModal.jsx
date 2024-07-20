@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Modal } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
 const DeleteConfirmationModal = ({ visible, onClose, onDeleteProduct, productId }) => {

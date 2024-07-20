@@ -2,48 +2,40 @@ import React, { useState } from 'react'
 import AddProductModal from '../modal/AddProductModal'
 import { Button } from 'antd'
 import DeleteConfirmationModal from '../modal/DeleteConfirmationModal';
+import useProducts from '../../hooks/useProducts';
+import useModal from '../../hooks/useModal';
+import EditProductModal from '../modal/EditProductModal';
 
 const ProductTable = () => {
-    const [products, setProducts] = useState([]);
-    const [sortOrder, setSortOrder] = useState("asc");
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+    const { products, addProduct, deleteProduct, updateProduct, sortProducts, sortOrder } = useProducts();
+    const { isModalOpen, showModal, hideModal } = useModal();
+    const { isModalOpen: isDeleteModalOpen, showModal: showDeleteModal, hideModal: hideDeleteModal } = useModal();
+    const { isModalOpen: isEditModalOpen, showModal: showEditModal, hideModal: hideEditModal } = useModal();
+
     const [selectedProductId, setSelectedProductId] = useState(null);
+    const [productToEdit, setProductToEdit] = useState();
 
-    const showModal = () => {
-        setIsModalOpen(true);
+    const handleAddProduct = (newProduct) => {
+        addProduct(newProduct);
+        hideModal();
+    }
+    const handleDeleteModalOpen = (productId) => {
+        setSelectedProductId(productId);
+        showDeleteModal();
+    };
+    const handleDeleteProduct = () => {
+        deleteProduct(selectedProductId);
+        hideDeleteModal();
+    }
+    const handleEditModalOpen = (product) => {
+        setProductToEdit(product);
+        showEditModal();
+    }
+    const handleUpdateProduct = (id, updatedProduct) => {
+        updateProduct(id, updatedProduct);
+        hideEditModal();
     }
 
-    const handleCancel = () => {
-        setIsModalOpen(false);
-    }
-
-    const showDeleteModal = (productId) => {
-        setIsDeleteModalOpen(true);
-        setSelectedProductId(productId)
-    }
-    const handleDeleteCancel = () => {
-        setIsDeleteModalOpen(false);
-    }
-    const sortProducts = () => {
-        const sortedProducts = [...products].sort((a, b) => {
-            return sortOrder === 'asc' ? a.price - b.price : b.price - a.price;
-        })
-
-        setProducts(sortedProducts);
-        setSortOrder(sortOrder === "asc" ? "desc" : "asc");
-    }
-    const addProduct = (product) => {
-        const newProduct = { ...product, id: products.length + 1 };
-        setProducts([...products, newProduct]);
-        setIsModalOpen(false);
-    }
-    const deleteProduct = (id) => {
-        const filterProducts = products.filter((product) => product.id !== id);
-
-        setProducts(filterProducts);
-        setIsDeleteModalOpen(false);
-    }
     return (
 
         <div>
@@ -55,18 +47,25 @@ const ProductTable = () => {
                     </svg>
 
                 </Button>
-                <AddProductModal visible={isModalOpen} onClose={handleCancel} onAddProduct={addProduct} />
+                <AddProductModal visible={isModalOpen} onClose={hideModal} onAddProduct={handleAddProduct} />
                 <DeleteConfirmationModal
                     visible={isDeleteModalOpen}
-                    onClose={handleDeleteCancel}
-                    onDeleteProduct={deleteProduct}
-                    productId={selectedProductId} />
+                    onClose={hideDeleteModal}
+                    onDeleteProduct={handleDeleteProduct}
+                    productId={selectedProductId}
+                />
+                <EditProductModal
+                    visible={isEditModalOpen}
+                    onClose={hideEditModal}
+                    product={productToEdit}
+                    onUpdateProduct={handleUpdateProduct}
+                />
             </div>
             <table class="table-fixed bg-white w-full rounded-lg ">
                 <thead className='border-b border-slate-300'>
                     <tr>
                         <th className=' lg:p-3 text-slate-900 font-medium'>Product ID</th>
-                        <th className=' lg:p-3 text-slate-900 font-medium'>Product Image</th>
+
                         <th className=' lg:p-3 text-slate-900 font-medium'>Product Name</th>
                         <th className=' lg:p-3 text-slate-900 font-medium'>Product Description</th>
                         <th className=' lg:p-3 text-slate-900 font-medium'>Product Category</th>
@@ -83,18 +82,24 @@ const ProductTable = () => {
                         products.map((product, _) => (
                             <tr key={product.id}>
                                 <td className='p-5 text-center'>{product.id}</td>
-                                <td className='flex justify-center'>
-                                    <img src={product.imageUrl} className='w-20' />
-                                </td>
-
                                 <td className=' p-5 text-center'>{product.name}</td>
                                 <td className=' p-5 text-center'>{product.description}</td>
                                 <td className=' p-5 text-center'>{product.category}</td>
                                 <td className=' p-5 text-center'>{product.price}</td>
                                 <td>
                                     <span className='flex gap-2 flex-col lg:flex-row justify-center'>
-                                        <Button type='primary' >Edit</Button>
-                                        <Button type='primary' danger onClick={() => showDeleteModal(product.id)}>Delete</Button>
+                                        <Button type='primary' onClick={() => handleEditModalOpen(product)} >
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
+                                                <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l8.4-8.4Z" />
+                                                <path d="M5.25 5.25a3 3 0 0 0-3 3v10.5a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3V13.5a.75.75 0 0 0-1.5 0v5.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5h5.25a.75.75 0 0 0 0-1.5H5.25Z" />
+                                            </svg>
+
+                                        </Button>
+                                        <Button type='primary' danger onClick={() => handleDeleteModalOpen(product.id)}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
+                                                <path fillRule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 0 1 3.878.512.75.75 0 1 1-.256 1.478l-.209-.035-1.005 13.07a3 3 0 0 1-2.991 2.77H8.084a3 3 0 0 1-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 0 1-.256-1.478A48.567 48.567 0 0 1 7.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 0 1 3.369 0c1.603.051 2.815 1.387 2.815 2.951Zm-6.136-1.452a51.196 51.196 0 0 1 3.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 0 0-6 0v-.113c0-.794.609-1.428 1.364-1.452Zm-.355 5.945a.75.75 0 1 0-1.5.058l.347 9a.75.75 0 1 0 1.499-.058l-.346-9Zm5.48.058a.75.75 0 1 0-1.498-.058l-.347 9a.75.75 0 0 0 1.5.058l.345-9Z" clipRule="evenodd" />
+                                            </svg>
+                                        </Button>
                                     </span>
                                 </td>
                             </tr>

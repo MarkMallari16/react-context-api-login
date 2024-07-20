@@ -8,6 +8,7 @@ const AddProductModal = ({ visible, onClose, onAddProduct }) => {
     const handleOk = () => {
         form.validateFields()
             .then(values => {
+             
                 form.resetFields();
                 onAddProduct(values);
                 onClose();
@@ -20,7 +21,7 @@ const AddProductModal = ({ visible, onClose, onAddProduct }) => {
     return (
         <>
 
-            <Modal title="Add new product" open={visible} onCancel={onClose} onOk={handleOk}>
+            <Modal title="Add new product" open={visible} onCancel={onClose} onOk={handleOk} okText="Confirm">
                 <Form form={form} layout="vertical" name="add_product_form">
                    
                     <Form.Item
