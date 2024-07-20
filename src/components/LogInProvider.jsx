@@ -28,6 +28,7 @@ const LogInProvider = ({ children }) => {
             return () => clearTimeout(timer);
         }
     }, [logoutMessage, showDashboard]);
+
     const login = (inputUsername, inputPassword) => {
         if (inputUsername === defaultUsername && inputPassword === defaultPassword) {
             setUsername(inputUsername);
@@ -46,6 +47,11 @@ const LogInProvider = ({ children }) => {
         setVisible(true);
         setShowDashboard(false)
     }
+    const updateProfile = (newUsername, newPassword) => {
+        setUsername(newUsername);
+        setPassword(newPassword);
+        setError("");
+    }
     return (
         <LogInContext.Provider
             value={{
@@ -61,6 +67,7 @@ const LogInProvider = ({ children }) => {
                 visible,
                 login,
                 logout,
+                updateProfile
             }}
         >
             {children}

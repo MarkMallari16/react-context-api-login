@@ -1,17 +1,10 @@
 import React from 'react'
-import { Modal, Form, Input, InputNumber, Select, message, Upload, Button } from "antd";
+import { Modal, Form, Input, InputNumber, Select } from "antd";
 import TextArea from 'antd/es/input/TextArea';
 
 const AddProductModal = ({ visible, onClose, onAddProduct }) => {
     const [form] = Form.useForm();
 
-    const handleUploadChange = ({ file }) => {
-        if (file.status === 'done') {
-            message.success(`${file.name} file uploaded successfully`);
-        } else if (file.status === 'error') {
-            message.error(`${file.name} file upload failed.`);
-        }
-    };
     const handleOk = () => {
         form.validateFields()
             .then(values => {
