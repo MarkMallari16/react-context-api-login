@@ -61,7 +61,7 @@ const ProductTable = () => {
                     onUpdateProduct={handleUpdateProduct}
                 />
             </div>
-            <table class="table-fixed bg-white w-full rounded-lg ">
+            <table class="table-fixed bg-white w-full rounded-lg">
                 <thead className='border-b border-slate-300'>
                     <tr>
                         <th className=' lg:p-3 text-slate-900 font-medium'>ID</th>
