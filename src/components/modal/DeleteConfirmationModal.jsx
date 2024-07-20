@@ -27,7 +27,7 @@ const DeleteConfirmationModal = ({ visible, onClose, onDeleteProduct, productId 
                 cancelText="Cancel"
 
             >
-                <p>Are you sure you want permanently delete this data?</p>
+                <p>Are you sure you want permanently delete this product?</p>
 
             </Modal>
         </>
