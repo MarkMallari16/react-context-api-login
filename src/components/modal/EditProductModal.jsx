@@ -31,14 +31,14 @@ const EditProductModal = ({ visible, onClose, product, onUpdateProduct }) => {
                 <Form.Item
                     name="name"
                     label="Product Name"
-                    rules={[{ required: true, message: 'Please input the product name!' }]}
+
                 >
                     <Input placeholder="Enter product name" />
                 </Form.Item>
                 <Form.Item
                     name="description"
                     label="Product Description"
-                    rules={[{ required: true, message: 'Please input the product description!' }]}
+
                 >
                     <TextArea
                         placeholder="Enter product description"
@@ -48,14 +48,13 @@ const EditProductModal = ({ visible, onClose, product, onUpdateProduct }) => {
                 <Form.Item
                     name="price"
                     label="Product Price"
-                    rules={[{ required: true, message: 'Please input the product price!' }]}
                 >
                     <InputNumber min={1} max={100000} className="w-full" />
                 </Form.Item>
                 <Form.Item
                     name="category"
                     label="Product Category"
-                    rules={[{ required: true, message: 'Please select a category!' }]}
+
                 >
                     <Select placeholder="Select a category">
                         <Select.Option value="electronics">Electronics</Select.Option>
@@ -63,7 +62,7 @@ const EditProductModal = ({ visible, onClose, product, onUpdateProduct }) => {
                         <Select.Option value="home">Home</Select.Option>
                     </Select>
                 </Form.Item>
-               
+
             </Form>
         </Modal>
     )

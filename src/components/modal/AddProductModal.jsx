@@ -1,14 +1,21 @@
-import React, { useState } from 'react'
-import { Button, Modal, Form, Input, InputNumber, Select } from "antd";
+import React from 'react'
+import { Modal, Form, Input, InputNumber, Select, message, Upload, Button } from "antd";
 import TextArea from 'antd/es/input/TextArea';
 
 const AddProductModal = ({ visible, onClose, onAddProduct }) => {
     const [form] = Form.useForm();
 
+    const handleUploadChange = ({ file }) => {
+        if (file.status === 'done') {
+            message.success(`${file.name} file uploaded successfully`);
+        } else if (file.status === 'error') {
+            message.error(`${file.name} file upload failed.`);
+        }
+    };
     const handleOk = () => {
         form.validateFields()
             .then(values => {
-             
+
                 form.resetFields();
                 onAddProduct(values);
                 onClose();
@@ -22,8 +29,7 @@ const AddProductModal = ({ visible, onClose, onAddProduct }) => {
         <>
 
             <Modal title="Add new product" open={visible} onCancel={onClose} onOk={handleOk} okText="Confirm">
-                <Form form={form} layout="vertical" name="add_product_form">
-                   
+                <Form form={form} layout="vertical" >
                     <Form.Item
                         name="name"
                         label="Product Name"
