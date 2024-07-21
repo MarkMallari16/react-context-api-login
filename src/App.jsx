@@ -2,10 +2,10 @@ import { useContext } from 'react'
 
 import './App.css'
 import { LogInContext } from './contexts/LogInContext';
-import LogInComponent from './components/LogInComponent';
+
 import Dashboard from './components/Dashboard';
 import LogInProvider from './components/LogInProvider';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Notifications from './pages/Notifications';
 import Analytics from './pages/Analytics';
@@ -13,6 +13,8 @@ import Settings from './pages/Settings';
 import Orders from './pages/Orders';
 import Products from './pages/Products';
 import useSideBar from './hooks/useSideBar';
+import LogIn from './pages/auth/LogIn';
+import Register from './pages/auth/Register';
 function App() {
   return (
     <LogInProvider>
@@ -27,7 +29,13 @@ function Content() {
   const { isSideBarExpand, handleSideBarExpand } = useSideBar();
 
   if (!showDashboard) {
-    return <LogInComponent />
+    return (
+      <Routes>
+        <Route path='/login' element={<LogIn />} />
+        <Route path='/signup' element={<Register />} />
+        <Route path="*" element={<Navigate to="/login" />} />
+      </Routes>
+    )
   }
 
   return (
@@ -36,7 +44,6 @@ function Content() {
         <nav >
           <Sidebar isSideBarExpand={isSideBarExpand} handleSideBarExpand={handleSideBarExpand} />
         </nav>
-
         <main className={`${isSideBarExpand ? 'ml-96' : 'ml-20'} w-full transition-all duration-500`}>
           <Routes>
             <Route path='/' element={<Dashboard />} />

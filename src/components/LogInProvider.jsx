@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { LogInContext } from '../contexts/LogInContext'
+
 const LogInProvider = ({ children }) => {
     const defaultUsername = "mark";
     const defaultPassword = "markpogi123";
@@ -45,7 +46,8 @@ const LogInProvider = ({ children }) => {
         setPassword("");
         setLogoutMessage("You have successfully logged out.");
         setVisible(true);
-        setShowDashboard(false)
+        setShowDashboard(false);
+        
     }
     const updateProfile = (newUsername, newPassword) => {
         setUsername(newUsername);
