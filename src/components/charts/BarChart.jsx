@@ -23,6 +23,8 @@ const BarChart = () => {
     };
 
     const options = {
+        responsive: true,
+        maintainAspectRatio: false,
         scales: {
             y: {
                 beginAtZero: true,
@@ -33,13 +35,12 @@ const BarChart = () => {
             legend: {
                 display: false,
             },
-            responsive: true,
         },
     };
 
     return (
 
-        <Bar data={data} options={options} className='bg-white p-5 rounded-lg  shadow-md'/>
+        <Bar data={data} options={options} className='bg-white p-5 rounded-lg  shadow-md w-full' />
 
 
     )

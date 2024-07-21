@@ -35,6 +35,7 @@ const LineChart = () => {
     };
     const options = {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
             legend: {
                 position: 'top',
@@ -43,6 +44,7 @@ const LineChart = () => {
                 display: true,
                 text: 'Sales Over Time',
             },
+           
         },
         scales: {
             y: {
@@ -52,7 +54,7 @@ const LineChart = () => {
     };
 
     return (
-        <Line data={data} options={options} className='bg-white p-5 rounded-lg shadow-md'/>
+        <Line data={data} options={options} className='bg-white p-5 rounded-lg shadow-md' />
     )
 }
 
