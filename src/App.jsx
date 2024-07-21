@@ -33,7 +33,7 @@ function Content() {
       <Routes>
         <Route path='/login' element={<LogIn />} />
         <Route path='/signup' element={<Register />} />
-        <Route path="*" element={<Navigate to="/login" />} />
+        <Route path="*" element={<Navigate to="/login" replace/>} />
       </Routes>
     )
   }
@@ -46,7 +46,7 @@ function Content() {
         </nav>
         <main className={`${isSideBarExpand ? 'ml-96' : 'ml-20'} w-full transition-all duration-500`}>
           <Routes>
-            <Route path='/' element={<Dashboard />} />
+            <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/orders' element={<Orders />} />
             <Route path='/products' element={<Products />} />
             <Route path='/notifications' element={<Notifications />} />

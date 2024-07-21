@@ -34,12 +34,13 @@ const LogInProvider = ({ children }) => {
         if (inputUsername === defaultUsername && inputPassword === defaultPassword) {
             setUsername(inputUsername);
             setPassword(inputPassword);
-            setShowDashboard(true);
             setError("");
+            setShowDashboard(true);
         } else {
             setError("Invalid username or password");
         }
     }
+    
     const logout = () => {
         localStorage.removeItem("showDashboard");
         setUsername("");

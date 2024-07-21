@@ -1,16 +1,24 @@
 import React, { useContext } from 'react'
 import { LogInContext } from '../../contexts/LogInContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LogIn = () => {
-    const { username, setUsername, password, setPassword, error, login, logoutMessage, visible } = useContext(LogInContext);
+    const { username, setUsername, password, setPassword, error, login, logoutMessage, showDashboard, setShowDashboard, visible } = useContext(LogInContext);
+    const navigate = useNavigate();
 
     const handleEnter = (e) => {
         if (e.key === 'Enter') {
-            login(username, password);
+            handleLogin();
         }
     };
+    const handleLogin = () => {
+        login(username, password);
+        
+        if (showDashboard) {
+            navigate('/dashboard')
+        }
 
+    }
     return (
         <div className='min-h-screen grid grid-cols-1 lg:grid-cols-2 place-items-center'>
             <div className='hidden  h-full w-full lg:flex justify-center items-center bg-blue-500'>
@@ -44,7 +52,7 @@ const LogIn = () => {
                     </div>
                     {error && <p className='mt-1 text-red-500'>{error}</p>}
                     <div>
-                        <button className='text-white bg-blue-500 hover:bg-blue-600 w-full mt-6 transition-all ease-in-out p-3 rounded-lg' onClick={() => login(username, password)}>
+                        <button className='text-white bg-blue-500 hover:bg-blue-600 w-full mt-6 transition-all ease-in-out p-3 rounded-lg' onClick={handleLogin}>
                             Log in
                         </button>
                     </div>
