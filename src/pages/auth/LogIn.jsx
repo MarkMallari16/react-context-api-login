@@ -13,10 +13,7 @@ const LogIn = () => {
     };
     const handleLogin = () => {
         login(username, password);
-        
-        if (showDashboard) {
-            navigate('/dashboard')
-        }
+        navigate('/dashboard')
 
     }
     return (
