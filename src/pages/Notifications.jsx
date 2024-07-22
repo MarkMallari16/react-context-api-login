@@ -1,6 +1,7 @@
 import { Avatar, Badge, Button, Dropdown, Input, List } from 'antd';
 import React, { useState } from 'react'
 import { BellOutlined, CheckOutlined, CloseOutlined } from '@ant-design/icons';
+
 const notificationsData = [
     {
         id: 1,
