@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import AddProductModal from '../modal/AddProductModal'
-import { Button } from 'antd'
+import { Button, Input } from 'antd'
+import { ProductOutlined } from '@ant-design/icons'
 import DeleteConfirmationModal from '../modal/DeleteConfirmationModal';
 import useProducts from '../../hooks/useProducts';
 import useModal from '../../hooks/useModal';
@@ -14,6 +15,8 @@ const ProductTable = () => {
 
     const [selectedProductId, setSelectedProductId] = useState(null);
     const [productToEdit, setProductToEdit] = useState();
+    const [searchProduct, setSearchProduct] = useState("");
+
 
     const handleAddProduct = (newProduct) => {
         addProduct(newProduct);
@@ -35,18 +38,24 @@ const ProductTable = () => {
         updateProduct(id, updatedProduct);
         hideEditModal();
     }
-
+    const filteredProducts = products.filter(product =>
+        product.name.toLowerCase().includes(searchProduct.toLowerCase()) ||
+        product.description.toLowerCase().includes(searchProduct.toLowerCase())
+    )
     return (
 
         <div>
             <div className='flex justify-end mb-4'>
-                <Button type="primary" onClick={showModal}>
-                    Add new product
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
-                        <path fillRule="evenodd" d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" clipRule="evenodd" />
-                    </svg>
+                <div className='flex gap-4'>
+                    <Input.Search placeholder='Search Product' onChange={(e) => setSearchProduct(e.target.value)} onSearch={(value) => setSearchProduct(value)} />
+                    <Button type="primary" onClick={showModal}>
+                        Add new product
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
+                            <path fillRule="evenodd" d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" clipRule="evenodd" />
+                        </svg>
 
-                </Button>
+                    </Button>
+                </div>
                 <AddProductModal visible={isModalOpen} onClose={hideModal} onAddProduct={handleAddProduct} />
                 <DeleteConfirmationModal
                     visible={isDeleteModalOpen}
@@ -61,7 +70,7 @@ const ProductTable = () => {
                     onUpdateProduct={handleUpdateProduct}
                 />
             </div>
-        <table class="table-fixed bg-white w-full rounded-lg">
+            <table class="table-fixed bg-white w-full rounded-lg">
                 <thead className='border-b border-slate-300'>
                     <tr>
                         <th className=' lg:p-3 text-slate-900 font-medium'>ID</th>
@@ -74,12 +83,15 @@ const ProductTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {products.length === 0 ? (
+                    {filteredProducts.length === 0 ? (
                         <tr >
-                            <td className='p-5 text-center text-slate-600' colSpan={7}>No product</td>
+                            <td className='p-5 text-center text-slate-600 ' colSpan={7}>
+                                <ProductOutlined className='text-3xl'/>
+                                <p>No Product Available</p>
+                            </td>
                         </tr>
                     ) : (
-                        products.map((product, _) => (
+                        filteredProducts.map((product, _) => (
                             <tr key={product.id}>
                                 <td className='p-5 text-center'>{product.id}</td>
                                 <td className='p-5 text-center'>

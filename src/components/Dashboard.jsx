@@ -1,6 +1,9 @@
 import React, { useContext } from 'react'
 import { LogInContext } from '../contexts/LogInContext'
 import { AiOutlineProduct } from "react-icons/ai";
+import BarChart from '../components/charts/BarChart'
+import LineChart from '../components/charts/LineChart'
+
 const Dashboard = () => {
   const { username } = useContext(LogInContext);
   const dashboardOverviews = [
@@ -39,7 +42,7 @@ const Dashboard = () => {
       </div>
       <div className='mt-6 grid grid-cols-1 lg:grid-cols-4 gap-4 w-full'>
         {dashboardOverviews.map((overview, index) => (
-          <div key={index} className='bg-white flex justify-between items-center px-5 py-10 rounded-lg shadow-md'>
+          <div key={index} className='bg-white flex justify-between items-center px-5 py-10 rounded-lg shadow-md w-full'>
             <div>
               <h1 className='text-3xl text-slate-900 font-bold'>{overview.value}</h1>
               <p className='text-slate-800'>{overview.text}</p>
@@ -49,6 +52,15 @@ const Dashboard = () => {
             </div>
           </div>
         ))}
+
+      </div>
+      <div className='mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6'>
+        <div className=' h-80'>
+          <LineChart />
+        </div>
+        <div className='h-80'>
+          <BarChart />
+        </div>
       </div>
     </div>
   )
