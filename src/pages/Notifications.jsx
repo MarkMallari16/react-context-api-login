@@ -4,7 +4,7 @@ import { BellOutlined, CheckOutlined, CloseOutlined } from '@ant-design/icons';
 const notificationsData = [
     {
         id: 1,
-        type: 'order',
+        type: 'orders',
         title: 'New Order Received',
         description: 'Order #1234 has been received.',
         timestamp: '2024-07-22 10:00 AM',
@@ -12,27 +12,52 @@ const notificationsData = [
     },
     {
         id: 2,
-        type: 'review',
+        type: 'reviews',
         title: 'New Product Review',
         description: 'Product XYZ has a new review.',
-        timestamp: '2024-07-22 09:00 AM',
+        timestamp: '2024-07-22 09:30 AM',
         read: true,
     },
-]
+    {
+        id: 3,
+        type: 'reviews',
+        title: 'New Product Review',
+        description: 'Product ABC has a new review.',
+        timestamp: '2024-07-21 04:15 PM',
+        read: false,
+    },
+    {
+        id: 4,
+        type: 'orders',
+        title: 'Order Shipped',
+        description: 'Order #5678 has been shipped.',
+        timestamp: '2024-07-21 11:00 AM',
+        read: false,
+    },
+    {
+        id: 5,
+        type: 'reviews',
+        title: 'New Product Review',
+        description: 'Product DEF has a new review.',
+        timestamp: '2024-07-20 03:45 PM',
+        read: true,
+    },
+];
 const Notifications = () => {
     const [notifications, setNotifications] = useState(notificationsData);
     const [searchText, setSearchText] = useState("");
     const [filter, setFilter] = useState("All Notifications");
 
+
     const handleMenuClick = (e) => {
         setFilter(e.key);
-        console.log(filter)
+
     }
     const notificationItems = [
         { key: 'All Notifications', label: 'All Notifications' },
-        { key: 'Orders', label: 'Orders' },
-        { key: 'Reviews', label: 'Reviews' },
-        { key: 'Inventory', label: 'Inventory' },
+        { key: 'orders', label: 'Orders' },
+        { key: 'reviews', label: 'Reviews' },
+        { key: 'inventory', label: 'Inventory' },
     ]
     const menu = {
         items: notificationItems,
@@ -53,11 +78,12 @@ const Notifications = () => {
             notif.id === notifId ? { ...notif, read: false } : notif
         ))
     }
+
     return (
         <div className='p-5 w-full'>
             <h1 className='text-2xl mb-4 font-bold'>Notifications</h1>
 
-            <div className=' bg-white border shadow-sm py-8 px-10 rounded-lg'>
+            <div className=' bg-white border shadow-sm py-8 px-10 rounded-lg w-full'>
                 <div className='flex justify-between mb-6'>
                     <Dropdown menu={menu}>
                         <Button icon={<BellOutlined />}>Filter</Button>
@@ -65,7 +91,7 @@ const Notifications = () => {
                     <Input.Search placeholder='Search notifications'
                         onSearch={value => setSearchText(value)}
                         onChange={(e) => setSearchText(e.target.value)}
-                        className='w-80' />
+                        className='w-72' />
                 </div>
 
                 <List

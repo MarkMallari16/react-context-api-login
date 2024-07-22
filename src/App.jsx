@@ -5,7 +5,7 @@ import { LogInContext } from './contexts/LogInContext';
 
 import Dashboard from './components/Dashboard';
 import LogInProvider from './components/LogInProvider';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Notifications from './pages/Notifications';
 import Analytics from './pages/Analytics';
@@ -33,7 +33,7 @@ function Content() {
       <Routes>
         <Route path='/login' element={<LogIn />} />
         <Route path='/signup' element={<Register />} />
-        <Route path="*" element={<Navigate to="/login" replace/>} />
+        <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     )
   }
@@ -52,13 +52,13 @@ function Content() {
             <Route path='/notifications' element={<Notifications />} />
             <Route path='/analytics' element={<Analytics />} />
             <Route path='/settings' element={<Settings />} />
+          
           </Routes>
-
+         
         </main>
       </div>
     </>
   )
-
 }
 
 export default App
