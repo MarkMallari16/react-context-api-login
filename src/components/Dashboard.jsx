@@ -8,7 +8,7 @@ import useDate from '../hooks/useDate';
 const Dashboard = () => {
   const { username } = useContext(LogInContext);
   const { formattedDate } = useDate();
-  console.log(formattedDate);
+
   const dashboardOverviews = [
     {
       value: 2000,
@@ -37,6 +37,7 @@ const Dashboard = () => {
       </svg>
     },
   ]
+  
   return (
     <div className='p-5 w-full'>
       <div className='mb-4'>

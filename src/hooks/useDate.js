@@ -9,7 +9,6 @@ const useDate = () => {
             default: return 'th';
         }
     }
-
     const formatDate = (date) => {
         const day = date.getDate();
         const monthNames = [
