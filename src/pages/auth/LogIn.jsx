@@ -17,8 +17,8 @@ const LogIn = () => {
 
     }
     return (
-        <div className='min-h-screen grid grid-cols-1 lg:grid-cols-2 place-items-center'>
-            <div className='hidden  h-full w-full lg:flex justify-center items-center bg-blue-500'>
+        <div className='min-h-screen grid grid-cols-1 lg:grid-cols-2 place-items-center '>
+            <div className='hidden h-full w-full lg:flex justify-center items-center bg-blue-500'>
                 <div className='text-white'>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-full">
                         <path d="M5.223 2.25c-.497 0-.974.198-1.325.55l-1.3 1.298A3.75 3.75 0 0 0 7.5 9.75c.627.47 1.406.75 2.25.75.844 0 1.624-.28 2.25-.75.626.47 1.406.75 2.25.75.844 0 1.623-.28 2.25-.75a3.75 3.75 0 0 0 4.902-5.652l-1.3-1.299a1.875 1.875 0 0 0-1.325-.549H5.223Z" />
@@ -29,15 +29,14 @@ const LogIn = () => {
 
             </div>
 
-            <div className='h-full  flex justify-center items-center '>
-                <div className='w-full mx-10 md:mx-20 lg:mx-24 p-12 rounded-lg'>
+            <div className='h-full flex justify-center items-center max-w-md'>
+                <div className='w-full rounded-lg'>
                     {logoutMessage &&
                         <div className={`py-4 text-center mb-5 rounded-lg border bg-green-500 text-white font-medium transition-opacity duration-1000 ${visible ? 'opacity-100' : 'opacity-0'}`}>
                             <p>{logoutMessage}</p>
                         </div>}
                     <div>
-                        <h1 className='text-4xl font-bold text-slate-800 mb-1'>Login</h1>
-                        <p className='text-slate-500'>We're glad to see you again! Please enter your credentials to access your account.</p>
+                        <h1 className='text-4xl font-medium text-slate-800 mb-1'>Login</h1>
                     </div>
                     <div className='mt-4'>
                         <label htmlFor="username" className='text-lg text-slate-700'>Enter Username: </label>
@@ -54,7 +53,7 @@ const LogIn = () => {
                         </button>
                     </div>
                     <div className='text-center mt-2 text-gray-800'>
-                        <Link to='/signup'>Don't have account? Sign up</Link>
+                        <Link to='/signup'>Don't have account? Sign Up</Link>
                     </div>
                 </div>
             </div>

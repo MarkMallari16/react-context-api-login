@@ -20,6 +20,7 @@ const ProductTable = () => {
 
     const handleAddProduct = (newProduct) => {
         addProduct(newProduct);
+        setSearchProduct("");
         hideModal();
     }
     const handleDeleteModalOpen = (productId) => {
@@ -47,7 +48,7 @@ const ProductTable = () => {
         <div>
             <div className='flex justify-end mb-4'>
                 <div className='flex gap-4'>
-                    <Input.Search placeholder='Search Product' onChange={(e) => setSearchProduct(e.target.value)} onSearch={(value) => setSearchProduct(value)} />
+                    <Input.Search placeholder='Search Product' value={searchProduct} onChange={(e) => setSearchProduct(e.target.value)} onSearch={(value) => setSearchProduct(value)} />
                     <Button type="primary" onClick={showModal}>
                         Add new product
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-5">
