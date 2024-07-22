@@ -3,9 +3,12 @@ import { LogInContext } from '../contexts/LogInContext'
 import { AiOutlineProduct } from "react-icons/ai";
 import BarChart from '../components/charts/BarChart'
 import LineChart from '../components/charts/LineChart'
+import useDate from '../hooks/useDate';
 
 const Dashboard = () => {
   const { username } = useContext(LogInContext);
+  const { formattedDate } = useDate();
+  console.log(formattedDate);
   const dashboardOverviews = [
     {
       value: 2000,
@@ -38,7 +41,7 @@ const Dashboard = () => {
     <div className='p-5 w-full'>
       <div className='mb-4'>
         <h1 className='text-2xl font-bold text-slate-900'>Dashboard</h1>
-        <p className='text-slate-600 text-md'>{new Date().getTime()}</p>
+        <p className='text-slate-600 text-md'>{formattedDate}</p>
       </div>
       <div className='border shadow-sm py-5 px-6 rounded-lg bg-white'>
         <h3 className='text-xl text-slate-900'>Welcome back! <span className='font-bold'>{username}</span></h3>
