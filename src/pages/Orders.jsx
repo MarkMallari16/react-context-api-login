@@ -7,8 +7,6 @@ const Orders = () => {
             <div className='bg-white  border shadow-sm py-8 px-10 rounded-lg'>
                 Manage Orders
             </div>
-
-            <button>Hello</button>
         </div>
     )
 }

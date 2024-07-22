@@ -1,4 +1,4 @@
-import React, { useContext} from 'react'
+import React, { useContext } from 'react'
 import { LogInContext } from '../contexts/LogInContext'
 import SidebarLinks from './SidebarLinks';
 
@@ -18,8 +18,8 @@ const Sidebar = ({ isSideBarExpand, handleSideBarExpand }) => {
             </div>
             <div >
                 <div className='flex w-full items-center space-x-4'>
-                    <div className={`bg-blue-500 text-xl text-center rounded-lg py-3 px-4 ${isSideBarExpand ? 'w-auto' : 'w-full'} `}>
-                        <p className='font-bold text-slate-50 transition-all duration-300'>{shortName}</p>
+                    <div className='bg-blue-500 py-3 px-4 rounded-lg'>
+                        <p className='font-bold text-slate-50 transition-all duration-300 text-xl '>{shortName}</p>
                     </div>
                     <div className={` transition-opacity ease-in-out duration-200 ${!isSideBarExpand && 'opacity-0 '}`}>
                         <div className='font-medium text-lg'>{username}</div>
@@ -28,7 +28,7 @@ const Sidebar = ({ isSideBarExpand, handleSideBarExpand }) => {
                 </div>
                 <SidebarLinks isSideBarExpand={isSideBarExpand} />
             </div>
-        </div >
+        </div>
     )
 }
 
