@@ -44,7 +44,7 @@ function Content() {
         <nav >
           <Sidebar isSideBarExpand={isSideBarExpand} handleSideBarExpand={handleSideBarExpand} />
         </nav>
-        <main className={`${isSideBarExpand ? 'ml-96' : 'ml-20'} w-full transition-all duration-500`}>
+        <main className={`${isSideBarExpand ? 'ml-80' : 'ml-20'} w-full transition-all duration-500`}>
           <Routes>
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/orders' element={<Orders />} />

@@ -36,7 +36,10 @@ const Dashboard = () => {
   ]
   return (
     <div className='p-5 w-full'>
-      <h1 className='text-2xl mb-4 font-bold'>Dashboard</h1>
+      <div className='mb-4'>
+        <h1 className='text-2xl font-bold text-slate-900'>Dashboard</h1>
+        <p className='text-slate-600 text-md'>{new Date().getTime()}</p>
+      </div>
       <div className='border shadow-sm py-5 px-6 rounded-lg bg-white'>
         <h3 className='text-xl text-slate-900'>Welcome back! <span className='font-bold'>{username}</span></h3>
       </div>
@@ -45,7 +48,7 @@ const Dashboard = () => {
           <div key={index} className='bg-white flex justify-between items-center px-5 py-10 rounded-lg shadow-md w-full'>
             <div>
               <h1 className='text-3xl text-slate-900 font-bold'>{overview.value}</h1>
-              <p className='text-slate-800'>{overview.text}</p>
+              <p className='text-slate-900'>{overview.text}</p>
             </div>
             <div className='p-3 bg-blue-100 text-blue-500 rounded-xl '>
               {overview.icon}
