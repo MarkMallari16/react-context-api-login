@@ -56,9 +56,9 @@ const Notifications = () => {
     }
     const notificationItems = [
         { key: 'All Notifications', label: 'All Notifications' },
-        { key: 'orders', label: 'Orders' },
-        { key: 'reviews', label: 'Reviews' },
-        { key: 'inventory', label: 'Inventory' },
+        { key: 'Orders', label: 'Orders' },
+        { key: 'Reviews', label: 'Reviews' },
+        { key: 'Inventory', label: 'Inventory' },
     ]
     const menu = {
         items: notificationItems,
