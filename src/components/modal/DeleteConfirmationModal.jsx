@@ -25,6 +25,7 @@ const DeleteConfirmationModal = ({ visible, onClose, onDeleteProduct, productId 
                 onCancel={handleCancel}
                 okText="Delete"
                 cancelText="Cancel"
+                centered
 
             >
                 <p>Are you sure you want permanently delete this product?</p>

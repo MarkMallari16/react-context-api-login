@@ -3,7 +3,7 @@ import { LogInContext } from '../../contexts/LogInContext';
 import { Link, useNavigate } from 'react-router-dom';
 
 const LogIn = () => {
-    const { username, setUsername, password, setPassword, error, login, logoutMessage, showDashboard, setShowDashboard, visible } = useContext(LogInContext);
+    const { username, setUsername, password, setPassword, error, login, logoutMessage, visible } = useContext(LogInContext);
     const navigate = useNavigate();
 
     const handleEnter = (e) => {
@@ -30,7 +30,7 @@ const LogIn = () => {
             </div>
 
             <div className='h-full  flex justify-center items-center '>
-                <div className='w-full mx-10 lg:mx-32 p-12 rounded-lg'>
+                <div className='w-full mx-10 md:mx-20 lg:mx-24 p-12 rounded-lg'>
                     {logoutMessage &&
                         <div className={`py-4 text-center mb-5 rounded-lg border bg-green-500 text-white font-medium transition-opacity duration-1000 ${visible ? 'opacity-100' : 'opacity-0'}`}>
                             <p>{logoutMessage}</p>
