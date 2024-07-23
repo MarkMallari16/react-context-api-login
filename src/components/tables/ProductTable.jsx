@@ -87,7 +87,7 @@ const ProductTable = () => {
                     {filteredProducts.length === 0 ? (
                         <tr >
                             <td className='p-5 text-center text-slate-600 ' colSpan={7}>
-                                <ProductOutlined className='text-3xl'/>
+                                <ProductOutlined className='text-3xl' />
                                 <p>No Product Available</p>
                             </td>
                         </tr>
@@ -95,8 +95,8 @@ const ProductTable = () => {
                         filteredProducts.map((product, _) => (
                             <tr key={product.id}>
                                 <td className='p-5 text-center'>{product.id}</td>
-                                <td className='p-5 text-center'>
-                                    <img src="https://img.freepik.com/free-photo/yellow-backpack-school-bag-green-background-ai-generative_123827-23977.jpg?t=st=1721458097~exp=1721461697~hmac=7cae56200979d0fba2586af9055847f4fef7044c42415ad96b55645774034027&w=900" className='rounded-lg' />
+                                <td className='p-5 text-center flex justify-center'>
+                                    <img src={URL.createObjectURL(product.image)} className='rounded-lg w-20' />
                                 </td>
                                 <td className=' p-5 text-center'>{product.name}</td>
                                 <td className=' p-5 text-center'>{product.description}</td>

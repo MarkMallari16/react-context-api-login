@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
-import { Modal, Form, Input, InputNumber, Select, Button } from 'antd';
+import { Modal, Form, Input, InputNumber, Select, Upload, Button } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
+import { UploadOutlined } from '@ant-design/icons'
 
 const EditProductModal = ({ visible, onClose, product, onUpdateProduct }) => {
     const [form] = Form.useForm();
 
-    console.log(product);
     useEffect(() => {
         if (product) {
             form.setFieldsValue(product);
@@ -25,9 +25,12 @@ const EditProductModal = ({ visible, onClose, product, onUpdateProduct }) => {
                 console.log('Validate Failed:', info);
             });
     };
+
+ 
     return (
         <Modal title="Edit Product" open={visible} onCancel={onClose} onOk={handleOk} okText="Confirm">
             <Form form={form} layout="vertical" name="edit_product_form">
+                
                 <Form.Item
                     name="name"
                     label="Product Name"

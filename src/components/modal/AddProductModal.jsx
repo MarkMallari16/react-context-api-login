@@ -1,28 +1,51 @@
 import React from 'react'
-import { Modal, Form, Input, InputNumber, Select } from "antd";
+import { Modal, Form, Input, InputNumber, Select, Upload, Button } from "antd";
 import TextArea from 'antd/es/input/TextArea';
-
+import { UploadOutlined } from '@ant-design/icons';
 const AddProductModal = ({ visible, onClose, onAddProduct }) => {
     const [form] = Form.useForm();
 
     const handleOk = () => {
         form.validateFields()
             .then(values => {
+                const { image, ...productData } = values
+                if (image && image.length > 0) {
+                    productData.image = image[0].originFileObj;
+                   
+                } else {
+                    productData.image = null;
+                }
 
                 form.resetFields();
-                onAddProduct(values);
+                onAddProduct(productData);
                 onClose();
             })
             .catch(info => {
                 console.log('Validate Failed:', info);
             });
     };
-
+    const normFile = e => {
+        if (Array.isArray(e)) {
+            return e
+        }
+        return e && e.fileList;
+    }
     return (
         <>
 
             <Modal title="Add new product" open={visible} onCancel={onClose} onOk={handleOk} okText="Confirm">
                 <Form form={form} layout="vertical" >
+                    <Form.Item
+                        name="image"
+                        label="Product Image"
+                        valuePropName="fileList"
+                        getValueFromEvent={normFile}
+                        rules={[{ required: true, message: 'Please upload a product image!' }]}
+                    >
+                        <Upload name="image" listType='picture' beforeUpload={() => false}>
+                            <Button icon={<UploadOutlined />}>Upload Image</Button>
+                        </Upload>
+                    </Form.Item>
                     <Form.Item
                         name="name"
                         label="Product Name"

@@ -1,19 +1,21 @@
-import { Input, Form, Button } from 'antd'
+import { Input, Form, Button, Upload, message } from 'antd'
 import React, { useContext } from 'react'
 import { LogInContext } from '../contexts/LogInContext';
 
 const Settings = () => {
     const [form] = Form.useForm();
     const { updateProfile, username, password } = useContext(LogInContext);
-    
+
     const handleSubmit = (values) => {
         const { name, password } = values;
         updateProfile(name, password)
         form.setFieldsValue({
             name: name,
-            passowrd: password
+            passowrd: password,
+           
         })
     }
+
     return (
         <div className='p-5 w-full'>
             <h1 className='text-2xl mb-4 font-bold'>Settings</h1>
@@ -31,6 +33,7 @@ const Settings = () => {
                         name: username,
                         password: password
                     }}>
+                  
                     <Form.Item
                         name="name"
                         label="Username"
