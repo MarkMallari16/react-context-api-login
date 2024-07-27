@@ -86,7 +86,7 @@ const ProductTable = () => {
                 <tbody>
                     {filteredProducts.length === 0 ? (
                         <tr >
-                            <td className='p-5 text-center text-slate-600 ' colSpan={7}>
+                            <td className='p-10 text-center text-slate-600 ' colSpan={7}>
                                 <ProductOutlined className='text-3xl' />
                                 <p>No Product Available</p>
                             </td>

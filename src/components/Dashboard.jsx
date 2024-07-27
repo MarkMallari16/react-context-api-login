@@ -47,6 +47,7 @@ const Dashboard = () => {
       <div className='border shadow-sm py-5 px-6 rounded-lg bg-white'>
         <h3 className='text-xl text-slate-900'>Welcome back! <span className='font-bold'>{username}</span></h3>
       </div>
+      
       <div className='mt-6 grid grid-cols-1 lg:grid-cols-4 gap-4 w-full'>
         {dashboardOverviews.map((overview, index) => (
           <div key={index} className='bg-white flex justify-between items-center px-5 py-10 rounded-lg shadow-md w-full'>
