@@ -21,7 +21,7 @@ const Register = () => {
           </div>
           <div className='mt-4'>
             <label htmlFor="password" className='text-lg text-slate-700'>Confirm Password: </label>
-            <input type="password" placeholder='Password' className='mt-1 p-4 w-full border rounded-lg border-slate-300 focus:outline-blue-500' />
+            <input type="password" placeholder='Confirm password' className='mt-1 p-4 w-full border rounded-lg border-slate-300 focus:outline-blue-500' />
           </div>
           <div>
             <button className='text-white bg-blue-500 hover:bg-blue-600 w-full mt-6 transition-all ease-in-out p-3 rounded-lg' >
